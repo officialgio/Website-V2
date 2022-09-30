@@ -17,7 +17,7 @@
     --even-section: #f8f8f8;
 }
 
-/* General */
+/******************************** General ********************************/
 * {
     
     font-family: var(--main-font);
@@ -83,7 +83,7 @@ section:nth-child(even) { /* for every even section set this color */
     margin-bottom: 50px;
 }
 
-/* Navigation Bar */
+/******************************** Nav Bar ********************************/
 nav {
     height: 100px;
     width: 100%;
@@ -127,7 +127,7 @@ nav {
     font-weight: 600;
 }
 
-/* About Me */
+/******************************** About me ********************************/
 /* he hashtag '#' is an id selector used to target a single specific element with a unique id */
 #about-me {
     min-height: 100vh;
@@ -237,3 +237,141 @@ nav {
     opacity: 1;
 }
 
+/******************************** Projects ********************************/
+
+.project__img {
+    width: 100%;
+    transition: all 500ms;
+}
+
+.project__wrapper {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 30%;
+    /*padding: 25px 25px;*/
+    overflow: hidden;
+    position: relative;
+}
+
+/************* Phone Purpose *************/
+
+.project__wrapper--phone {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 80%;
+
+    /*padding: 25px 25px;*/
+    overflow: hidden;
+    position: relative;
+}
+
+.project__wrapper--phone:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    opacity: 0;
+    transition: opacity 450ms ease;
+    z-index: 2;
+}
+
+.project:hover .project__wrapper--phone:before {
+    opacity: 0.7;
+}
+
+.project:hover .project__description--phone {
+    opacity: 1;
+    transform: translateY(-15%);
+}
+.project__description--phone {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    max-width: 550px;
+    transform: translateY(100%);
+    z-index: 3;
+    opacity: 0;
+    transition: transform 450ms, opacity 300ms;
+}
+
+.project__description--title--phone {
+    font-size: 30px;
+}
+
+.project__description--para--phone {
+    margin: 16px 0;
+}
+
+.project__description--link--phone {
+    font-size: 20px;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.project__description--title--phone,
+.project__description--sub-title--phone,
+.project__description--para--phone,
+.project__description--link {
+    text-align: left;
+    color: white;
+}
+
+/****************************************/
+
+.project__wrapper:before {
+    content: "";
+    position: absolute; /* IMPORTANT: won't affect anything around it */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    opacity: 0;
+    transition: opacity 450ms ease;
+    z-index: 2;
+}
+
+.project:hover .project__wrapper:before {
+    opacity: 0.7;
+}
+
+.project:hover .project__img {
+    transform: scale(1.07);
+    filter: blur(5px); 
+}
+
+.project__list {
+    padding-top: 40px;
+}
+
+.project {
+    max-width: 50%; /* Phone screen Purposes */
+}
+
+.project__description {
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    max-width: 550px;
+    transform: translateY(-50%); /*text-align: center;*/
+    z-index: 3;
+}
+
+.project__description--title {
+    font-size: 40px;
+}
+
+.project__description--title,
+.project__description--sub-title,
+.project__description--para,
+.project__description--link { 
+    text-align: left;
+    color: white;
+}
