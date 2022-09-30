@@ -323,7 +323,7 @@ nav {
     color: white;
 }
 
-/****************************************/
+/*****************************************/
 
 .project__wrapper:before {
     content: "";
@@ -375,3 +375,5 @@ nav {
     text-align: left;
     color: white;
 }
+
+
