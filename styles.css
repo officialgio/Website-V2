@@ -1,0 +1,379 @@
+/* Global Variables */
+:root {
+    --main-font: -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen-Sans,
+        Ubuntu,
+        Cantarell,
+        Helvetica Neue,
+        sans-serif;
+
+    --main-color: #242424;
+    --second-color: rgb(10, 132, 255);
+    --hover-color: rgba(10, 132, 255, 0.865);
+    --gradient-color: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
+    --even-section: #f8f8f8;
+}
+
+/******************************** General ********************************/
+* {
+    
+    font-family: var(--main-font);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6, span { 
+    color: #242424;
+    text-align: center;
+    line-height: 1.25;
+}
+h1 {
+    font-size: 36px;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.flex {
+    display: flex; /* For child full height */
+}
+.flex-1 {
+    flex: 1; /* For full base height */ 
+}
+
+.row {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text--purple {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: var(--gradient-color);
+}
+
+.container {
+    padding: 50px 0;
+}
+
+section:nth-child(even) { /* for every even section set this color */
+    background-color: var(--even-section);
+}
+
+.section__title {
+    margin-bottom: 20px;
+}
+
+.under--dev {
+    display: flex;
+    padding: 12px 10px;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+/******************************** Nav Bar ********************************/
+nav {
+    height: 100px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__link--list {
+    display: flex;
+}
+
+.nav__link--anchor {
+    margin: 0 12px; /* space between text */
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: 700;
+} 
+
+.nav__link--anchor--primary {
+    background-color: var(--second-color);
+    padding: 8px 20px; /* 8 (top/bottom) & 20 (left/right) */
+    border-radius: 50px;
+    color: white;
+    transition: all 300ms ease-in;
+}
+
+.nav__link--anchor--primary:hover {
+    background-color: var(--hover-color);
+}
+
+.personal__logo { 
+    font-size: 24px;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: var(--gradient-color);
+    margin: 0 12px; /* space between text */
+    font-family: var(--main-font);
+    font-weight: 600;
+}
+
+/******************************** About me ********************************/
+/* he hashtag '#' is an id selector used to target a single specific element with a unique id */
+#about-me {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me__info--container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-me__picture--mask {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    overflow: hidden; /* hide everything else */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+    margin-bottom: 28px;
+}
+
+.about-me__picture {
+    width: 100%;
+    transform: scale(1.5);
+    transform: translateY(-10%);
+    padding-top: 8px;
+}
+
+.about-me__info--para {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 28px;
+}
+
+.about-me__info--title {
+    margin-bottom: 1rem;
+}
+
+.about--me__link { /* Icons */
+    font-size: 20px;
+    color: var(--main-color);
+    text-decoration: none;
+    padding: 0 16px;
+}
+
+.about--me__img--container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.about--me__img {
+    width: 100%;
+    padding: 25px 25px;
+}
+
+/* TECH STACK */
+.language {
+    width: 25%;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    position: relative; /* IMPORTANT: language name must be display at the bottom of its most nearest relative parent */
+}
+.language__img {
+    width: 100%;
+    max-width: 100px;
+    transition: all 300ms;
+}
+
+.language:hover .language__img {
+    filter: brightness(80%);
+    opacity: 0.86;
+    transform: scale(0.9);
+}
+
+.language__img--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 16px;
+}
+
+.language__list {
+    display: flex;
+    width: 100%;
+    justify-content: center; /* IMPORTANT: justify language img (delete if needed) */
+    flex-wrap: wrap; /* top and bottom positioning */
+}
+
+.language__name {
+    position: absolute;
+    bottom: 0;
+    transform: scale(0);
+    transition: all 300ms;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.language:hover .language__name {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/******************************** Projects ********************************/
+
+.project__img {
+    width: 100%;
+    transition: all 500ms;
+}
+
+.project__wrapper {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 30%;
+    /*padding: 25px 25px;*/
+    overflow: hidden;
+    position: relative;
+}
+
+/************* Phone Purpose *************/
+
+.project__wrapper--phone {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 80%;
+
+    /*padding: 25px 25px;*/
+    overflow: hidden;
+    position: relative;
+}
+
+.project__wrapper--phone:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    opacity: 0;
+    transition: opacity 450ms ease;
+    z-index: 2;
+}
+
+.project:hover .project__wrapper--phone:before {
+    opacity: 0.7;
+}
+
+.project:hover .project__description--phone {
+    opacity: 1;
+    transform: translateY(-15%);
+}
+.project__description--phone {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    max-width: 550px;
+    transform: translateY(100%);
+    z-index: 3;
+    opacity: 0;
+    transition: transform 450ms, opacity 300ms;
+}
+
+.project__description--title--phone {
+    font-size: 30px;
+}
+
+.project__description--para--phone {
+    margin: 16px 0;
+}
+
+.project__description--link--phone {
+    font-size: 20px;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+.project__description--title--phone,
+.project__description--sub-title--phone,
+.project__description--para--phone,
+.project__description--link {
+    text-align: left;
+    color: white;
+}
+
+/*****************************************/
+
+.project__wrapper:before {
+    content: "";
+    position: absolute; /* IMPORTANT: won't affect anything around it */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    opacity: 0;
+    transition: opacity 450ms ease;
+    z-index: 2;
+}
+
+.project:hover .project__wrapper:before {
+    opacity: 0.7;
+}
+
+.project:hover .project__img {
+    transform: scale(1.07);
+    filter: blur(5px); 
+}
+
+.project__list {
+    padding-top: 40px;
+}
+
+.project {
+    max-width: 50%; /* Phone screen Purposes */
+}
+
+.project__description {
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    max-width: 550px;
+    transform: translateY(-50%); /*text-align: center;*/
+    z-index: 3;
+}
+
+.project__description--title {
+    font-size: 40px;
+}
+
+.project__description--title,
+.project__description--sub-title,
+.project__description--para,
+.project__description--link { 
+    text-align: left;
+    color: white;
+}
+
+
