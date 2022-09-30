@@ -11,8 +11,10 @@
         sans-serif;
 
     --main-color: #242424;
-    --second-color: #6030b1;
-    --hover-color: #5d3eff;
+    --second-color: rgb(10, 132, 255);
+    --hover-color: rgba(10, 132, 255, 0.865);
+    --gradient-color: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
+    --even-section: #f8f8f8;
 }
 
 /* General */
@@ -44,10 +46,10 @@ li {
 }
 
 .flex {
-    display: flex;
+    display: flex; /* For child full height */
 }
 .flex-1 {
-    flex: 1;
+    flex: 1; /* For full base height */ 
 }
 
 .row {
@@ -57,7 +59,21 @@ li {
 }
 
 .text--purple {
-    color: var(--second-color);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: var(--gradient-color);
+}
+
+.container {
+    padding: 50px 0;
+}
+
+section:nth-child(even) { /* for every even section set this color */
+    background-color: var(--even-section);
+}
+
+.section__title {
+    margin-bottom: 20px;
 }
 
 /* Navigation Bar */
@@ -96,10 +112,12 @@ nav {
 
 .personal__logo { 
     font-size: 24px;
-    color: var(--second-color);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: var(--gradient-color);
     margin: 0 12px; /* space between text */
     font-family: var(--main-font);
-    font-weight: bold;
+    font-weight: 600;
 }
 
 /* About Me */
@@ -146,6 +164,69 @@ nav {
     margin-bottom: 1rem;
 }
 
+.about--me__link { /* Icons */
+    font-size: 20px;
+    color: var(--main-color);
+    text-decoration: none;
+    padding: 0 16px;
+}
+
+.about--me__img--container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.about--me__img {
+    width: 100%;
+}
 
 
+/* TECH STACK */
+.language {
+    width: 25%;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    position: relative; /* IMPORTANT: language name must be display at the bottom of its most nearest relative parent */
+}
+.language__img {
+    width: 100%;
+    max-width: 100px;
+    transition: all 300ms;
+}
+
+.language:hover .language__img {
+    filter: brightness(80%);
+    opacity: 0.86;
+    transform: scale(0.9);
+}
+
+.language__img--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 16px;
+}
+
+.language__list {
+    display: flex;
+    width: 100%;
+    justify-content: center; /* IMPORTANT: justify language img (delete if needed) */
+    flex-wrap: wrap; /* top and bottom positioning */
+}
+
+.language__name {
+    position: absolute;
+    bottom: 0;
+    transform: scale(0);
+    transition: all 300ms;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.language:hover .language__name {
+    transform: scale(1);
+    opacity: 1;
+}
 
