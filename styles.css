@@ -49,10 +49,18 @@ a {
     position: relative;
 }
 
+i {
+    transition: opacity 300ms ease;
+}
+
+i:hover {
+    opacity: 0.7;
+}
+
 .link__hover-effect:after {
     content: "";
     position: absolute;
-    height: 3px;
+    height: 2px; /* 3px ideally */ 
     width: 0;
     bottom: -3px;
     right: 0%;
@@ -71,6 +79,7 @@ a {
 .link__hover-effect--white::after {
     background-color: #fff;
 }
+
 
 li {
     list-style-type: none;
@@ -185,6 +194,19 @@ nav {
     overflow: hidden; /* hide everything else */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
     margin-bottom: 28px;
+    animation: animate-profile-picture 800ms 200ms backwards;
+}
+
+@keyframes animate-profile-picture {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-me__picture {
@@ -198,10 +220,12 @@ nav {
     font-size: 1rem;
     font-weight: 300;
     margin-bottom: 28px;
+    animation: fade-up 650ms 600ms backwards;
 }
 
 .about-me__info--title {
     margin-bottom: 1rem;
+    animation: fade-up 650ms 400ms backwards;
 }
 
 .about--me__link { /* Icons */
@@ -209,6 +233,21 @@ nav {
     color: var(--main-color);
     text-decoration: none;
     padding: 0 16px;
+}
+
+.about-me__links {
+    animation: fade-up 650ms 800ms backwards;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .about--me__img--container {
@@ -220,7 +259,36 @@ nav {
 .about--me__img {
     width: 100%;
     padding: 25px 25px;
+    animation: fade-in 1200ms 800ms backwards;
 }
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.wave {
+    display: inline-block;
+    animation: animate-wave 500ms infinite ease-in-out;
+}
+
+@keyframes animate-wave {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+
 
 /* TECH STACK */
 .language {
@@ -563,5 +631,9 @@ footer {
         line-height: 1;
         padding-right: 15px;
         text-align: center;
+    }
+
+    .language__name {
+        font-size: 15px;
     }
 }
