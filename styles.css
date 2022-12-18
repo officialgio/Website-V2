@@ -10,11 +10,18 @@
         Helvetica Neue,
         sans-serif;
 
+    --second-font: Google Sans,
+        Roboto,
+        Arial,
+        Helvetica,
+        sans-serif;
+
     --main-color: #242424;
     --second-color: rgb(10, 132, 255);
     --hover-color: rgba(10, 132, 255, 0.865);
     --gradient-color: linear-gradient(90deg, #2ca2b4, #5598de 24%, #7f87ff 45%, #f65aad 76%, #ec3d43);
     --even-section: #f8f8f8;
+
 }
 
 /******************************** General ********************************/
@@ -47,6 +54,8 @@ p {
 a {
     text-decoration: none;
     position: relative;
+    color: black;
+    font-weight: 12px;
 }
 
 i {
@@ -57,7 +66,7 @@ i:hover {
     opacity: 0.7;
 }
 
-.link__hover-effect:after {
+.link__hover-effect::after {
     content: "";
     position: absolute;
     height: 2px; /* 3px ideally */ 
@@ -161,13 +170,36 @@ nav {
 
 .personal__logo { 
     font-size: 24px;
-    color: transparent;
+    /** Custom Color Controls **/
+    color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to right,
+                #ed8080 0%,
+                #2a77d6 16%,
+                #5eb524 32%,
+                #eacd25 48%,
+                #ed8080 64%,
+                #2a77d6 80%,
+                #5eb524 100%);
+    background-size: 300% 300%;
+    background-repeat: no-repeat;
+    background-position: top left;
     -webkit-background-clip: text;
-    background-image: var(--gradient-color);
+    animation: rainbow infinite 3s linear;
+    /**************************************/
     margin: 0 12px; /* space between text */
     font-family: var(--main-font);
     font-weight: 600;
 }
+
+@keyframes rainbow {
+      0% {
+          background-position: top left;
+      }
+
+      100% {
+          background-position: top right;
+      }
+  }
 
 /******************************** About me ********************************/
 /* he hashtag '#' is an id selector used to target a single specific element with a unique id */
@@ -192,9 +224,9 @@ nav {
     height: 100px;
     border-radius: 50%; 
     overflow: hidden; /* hide everything else */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16); /* 8px downwards with 16px of blur*/
     margin-bottom: 28px;
-    animation: animate-profile-picture 800ms 200ms backwards;
+    animation: animate-profile-picture 800ms 200ms backwards; /* Add delay of 200ms */
 }
 
 @keyframes animate-profile-picture {
@@ -210,10 +242,10 @@ nav {
 }
 
 .about-me__picture {
-    width: 100%;
+    max-width: 100%;
     transform: scale(1.5);
     transform: translateY(-10%);
-    padding-top: 8px;
+    /**padding-top: 8px;**/
 }
 
 .about-me__info--para {
@@ -250,18 +282,6 @@ nav {
     }
 }
 
-.about--me__img--container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.about--me__img {
-    width: 100%;
-    padding: 25px 25px;
-    animation: fade-in 1200ms 800ms backwards;
-}
-
 @keyframes fade-in {
     0% {
         opacity: 0;
@@ -292,7 +312,7 @@ nav {
 
 /* TECH STACK */
 .language {
-    width: 25%;
+    width: 20%;
     align-content: center;
     display: flex;
     justify-content: center;
@@ -370,7 +390,7 @@ nav {
     box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
     border-radius: 20px;
     max-width: 80%;
-
+    left: 150px;
     /*padding: 25px 25px;*/
     overflow: hidden;
     position: relative;
@@ -389,11 +409,11 @@ nav {
     z-index: 2;
 }
 
-.project:hover .project__wrapper--phone:before {
+.project-phone:hover .project__wrapper--phone:before {
     opacity: 0.7;
 }
 
-.project:hover .project__description--phone {
+.project-phone:hover .project__description--phone {
     opacity: 1; /* To hover */
     transform: translateY(-15%);
 }
@@ -432,9 +452,104 @@ nav {
 
 /*****************************************/
 
+
+
+/************* Job Experience *************/
+
+.image__wrapper {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
+    border-radius: 20px;
+    /*padding: 25px 25px;*/
+    position: relative;
+    overflow: hidden;
+}
+
+.image__wrapper:before {
+    content: "";
+    position: absolute;
+    /* IMPORTANT: won't affect anything around it */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /**background-color: #1c1d25;**/
+    opacity: 0;
+    transition: opacity 450ms ease;
+    z-index: 2;
+}
+
+.work {
+    margin-bottom: 130px;
+}
+
+.work:hover .image__wrapper:before {
+    opacity: 0.7;
+}
+
+.about--me__img {
+    width: 100%;
+    height: 100%;
+    animation: fade-in 1200ms 800ms backwards;
+    transition: all 500ms ease;
+}
+
+.work:hover .about--me__img {
+    transform: scale(1.07);
+    filter: blur(10px);
+}
+
+.work:hover .work__description {
+    opacity: 1;
+}
+
+.experience__list {
+    padding-top: 40px;
+}
+
+.work__description {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-30px);
+    left: 150px;
+    max-width: 500px;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    z-index: 2;
+}
+
+.work__experience--title {
+    font-size: 50px;
+    
+}
+.work__description--para {
+    margin: 16px 0;
+    text-align: center;
+
+}
+
+.work__description--link {
+    font-size: 20px;
+}
+
+.work__experience--date {
+    font-size: 10;
+    font-weight: 200;
+}
+
+.work__experience--title,
+.work__experience--sub-title,
+.work__experience--date,
+.work__description--para,
+.work__description--link {
+    color: white;
+}
+
+
+/* Hover black background effect */
 .project__wrapper:before {
     content: "";
-    position: absolute; /* IMPORTANT: won't affect anything around it */
+    position: absolute;
     top: 0;
     left: 0;
     height: 100%;
@@ -443,7 +558,6 @@ nav {
     opacity: 0;
     transition: opacity 450ms ease;
     z-index: 2;
-    transform: translateY(100%);
 }
 
 .project:hover .project__wrapper:before {
@@ -465,7 +579,13 @@ nav {
 }
 
 .project {
-    max-width: 50%; /* Phone screen Purposes */
+    max-width: 100%; /* Phone screen Purposes */
+}
+
+.project-phone {
+    max-width: 50%;
+    padding: 20px 0;
+    margin-bottom: 100px;
 }
 
 .project__description {
@@ -482,6 +602,11 @@ nav {
 
 .project__description--title {
     font-size: 40px;
+}
+
+.project__description--para {
+    margin: 16px 0;
+    text-align: center;
 }
 
 .project__description--title,
@@ -512,6 +637,7 @@ footer {
 }
 
 .footer__logo--img {
+    border-radius: 50%;
     width: 70px;
     height: 70px;
 }
@@ -572,6 +698,10 @@ footer {
         font-size: 14px;
     }
 
+    .work__description {
+        left: 120px;
+    }
+
     /* .project__description--phone {
         padding-right: 38px;
     } */
@@ -581,6 +711,33 @@ footer {
 /* Small Phones */
 @media (max-width: 480px) { 
     .nav__link:not(:last-child) {
+        display: none;
+    }
+
+    .project__wrapper--phone {
+        left: 120px;
+    }
+
+    .work__description {
+        left: 100px;
+        right: 100px;
+        margin: 16px 0;
+    }
+
+    .work__description--links {
+        padding-top: 30px;
+        text-align: center;
+    }
+
+    .work__experience--title {
+        font-size: 30px;
+    }
+
+    .work__experience--sub-title {
+        font-size: 20px; 
+    }
+
+    .work__description--para {
         display: none;
     }
 
@@ -604,15 +761,19 @@ footer {
 
     /* trick to align center */
     .project__description--phone {
-        padding: 0;
-        left: 0;
+        padding: 20px 0;
         align-items: center;
     }
 
     .project__description--sub-title--phone {
         text-align: center;
         font-size: 12px;
-        margin: 12px 0;
+        padding: 25px 15px;
+        left: 0;
+    }
+
+    .project__description--link {
+        left: 0;
     }
 
     .project__description--sub-title {
@@ -637,3 +798,62 @@ footer {
         font-size: 15px;
     }
 }
+
+/******************************** Experience ********************************/
+
+.job__company {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 650px;
+    justify-content: space-between;
+    min-height: 100px;
+}
+
+.job__position {
+    padding-left: 12px;
+    padding-top: 1px;
+}
+
+
+.company__logo {
+   display: absolute;
+   bottom: 0;
+}
+
+.section__content {
+    padding: 20px 0;
+    height: 100px;
+    min-height: 100px;
+}
+
+.time-place {
+    min-height: 100px;
+}
+.microsoft-red {
+   display: flex;
+   flex-direction: row;
+   color: red;
+   flex-wrap: wrap;
+   top: 1px;
+}
+
+.microsoft-green {
+    display: flex;
+    position: relative;
+    color: rgb(31, 222, 31);
+}
+
+.microsoft-blue {
+    color: rgb(10, 132, 255);
+}
+
+.microsoft-yellow {
+    color: rgb(240, 244, 11);
+}
+
+
+
+
+
+
