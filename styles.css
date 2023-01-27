@@ -199,7 +199,7 @@ nav {
       100% {
           background-position: top right;
       }
-  }
+}
 
 /******************************** About me ********************************/
 /* he hashtag '#' is an id selector used to target a single specific element with a unique id */
@@ -220,8 +220,8 @@ nav {
 }
 
 .about-me__picture--mask {
-    width: 100px;
-    height: 100px;
+    width: 20em;
+    height: 20em;
     border-radius: 50%; 
     overflow: hidden; /* hide everything else */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16); /* 8px downwards with 16px of blur*/
@@ -244,7 +244,7 @@ nav {
 .about-me__picture {
     max-width: 100%;
     transform: scale(1.5);
-    transform: translateY(-10%);
+    transform: translateY(-25%);
     /**padding-top: 8px;**/
 }
 
@@ -813,6 +813,10 @@ footer {
 .job__position {
     padding-left: 12px;
     padding-top: 1px;
+}
+
+#job-experience {
+    padding-top: 2rem;
 }
 
 
